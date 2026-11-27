@@ -1,0 +1,1 @@
+Шрифты Cormorant Garamond и Manrope поставляются локально через пакеты @fontsource и Vite. CDN не используется. При сборке файлы шрифтов появляются в dist/assets. Лицензии OFL находятся в соответствующих пакетах node_modules/@fontsource.

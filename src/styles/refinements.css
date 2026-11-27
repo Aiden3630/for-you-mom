@@ -1,0 +1,453 @@
+.journey-mobile {
+  display: none;
+}
+.final-heart {
+  width: 82px;
+  height: 82px;
+}
+.final-heart > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.final-heart > span {
+  inset: auto;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  font-size: 24px;
+  line-height: 1;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .final-heart {
+    width: 72px;
+    height: 72px;
+  }
+  .final-heart > span {
+    font-size: 22px;
+  }
+}
+.envelope {
+  translate: var(--drift-x, 0) var(--drift-y, 0);
+  transition: translate 0.7s ease-out;
+}
+.intro-text {
+  font-size: 16px;
+}
+.letter-body p {
+  font-size: 16px;
+}
+.thank-message p,
+.wish-message p {
+  font-size: 15px;
+}
+.chapter-description,
+.final-text {
+  font-size: 16px;
+}
+.chapter-nav > button {
+  font-size: 12px;
+}
+.quiet-note,
+.album-note {
+  font-size: 12px;
+}
+.gratitude-letters {
+  gap: 30px 33px;
+}
+.mini-envelope {
+  min-width: 0;
+  width: 100%;
+}
+.album-spread {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.polaroid {
+  min-width: 0;
+}
+.photo-window img {
+  object-fit: contain;
+}
+.album-swipe-note {
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 14px auto 0;
+  max-width: 460px;
+}
+.photo-position {
+  font-size: 13px;
+  min-width: 48px;
+}
+.music-attribution {
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+  margin-top: 10px;
+  padding-top: 13px;
+}
+.music-attribution a {
+  text-underline-offset: 3px;
+}
+.garden-flowers {
+  flex-wrap: wrap;
+}
+.garden-flower {
+  flex-basis: 12%;
+}
+.garden-many .garden-scene {
+  height: auto;
+  min-height: 540px;
+}
+.garden-many .garden-flowers {
+  position: relative;
+  padding-top: 40px;
+  row-gap: 25px;
+}
+.garden-many .garden-flower {
+  flex-basis: 18%;
+}
+.garden-many .garden-grasses {
+  height: 260px;
+  top: auto;
+  bottom: 0;
+}
+@media (min-width: 1600px) {
+  .intro-copy {
+    max-width: 650px;
+  }
+}
+@media (max-width: 1100px) {
+  .chapter-nav > button {
+    font-size: 10px;
+  }
+}
+@media (max-width: 767px) {
+  .journey-desktop {
+    display: none;
+  }
+  .journey-mobile {
+    display: inline;
+  }
+  .journey-caption {
+    font-size: 19px;
+  }
+  .intro-text {
+    font-size: 14px;
+    max-width: 300px;
+  }
+  .letter-body p {
+    font-size: 15px;
+  }
+  .chapter-description,
+  .final-text {
+    font-size: 14px;
+  }
+  .thank-message p,
+  .wish-message p {
+    font-size: 14px;
+  }
+  .chapter-nav {
+    padding-top: 0;
+  }
+  .chapter-nav > button {
+    min-height: 52px;
+    font-size: 13px;
+  }
+  .chapter-nav > button::before {
+    top: -1px;
+  }
+  .chapter-nav > button > span:last-child {
+    display: none;
+  }
+  .nav-dot {
+    width: 32px;
+    height: 32px;
+    font-family: Manrope, sans-serif;
+    font-size: 12px;
+  }
+  .nav-dot > i,
+  .nav-dot > svg {
+    display: none;
+  }
+  .nav-dot::after {
+    content: attr(data-number);
+  }
+  .chapter-nav > button[aria-current] .nav-dot {
+    border: 1px solid #b76e7970;
+    border-radius: 50%;
+    background: #e8b4b816;
+  }
+  .footer-note {
+    font-size: 9px;
+    flex-wrap: wrap;
+    gap: 3px 7px;
+  }
+  .intro .quiet-note {
+    font-size: 11px;
+  }
+  .album-note {
+    font-size: 12px;
+  }
+  .gratitude-letters {
+    gap: 25px 12px;
+  }
+  .mini-envelope {
+    min-height: 48px;
+  }
+  .garden-many .garden-scene {
+    min-height: 650px;
+  }
+  .garden-many .garden-flower {
+    flex-basis: 24%;
+    min-width: 58px;
+  }
+  .quiet-note {
+    font-size: 11px;
+  }
+}
+@media (max-width: 359px) {
+  .journey-caption {
+    font-size: 17px;
+  }
+  .intro-text {
+    font-size: 14px;
+    max-width: 268px;
+  }
+  .gratitude-letters {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 23px 9px;
+  }
+  .letter-body p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gift-app {
+    overflow: clip;
+  }
+  .site-header {
+    position: sticky;
+    top: 0;
+    height: calc(76px + env(safe-area-inset-top));
+    padding-top: env(safe-area-inset-top);
+    background: var(--cream);
+  }
+  .brand {
+    font-size: 21px;
+  }
+  .sound-button {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 12px;
+  }
+  .contents-button {
+    width: 44px;
+    height: 44px;
+  }
+  .intro {
+    padding-top: 30px;
+  }
+  .intro h1 {
+    font-size: clamp(64px, 19vw, 86px);
+    margin-block: 20px;
+  }
+  .intro-text {
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 330px;
+  }
+  .intro .eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.09em;
+  }
+  .primary-button,
+  .secondary-button {
+    min-height: 54px;
+    font-size: 14px;
+    padding-inline: 24px;
+  }
+  .intro .primary-button {
+    min-width: 210px;
+  }
+  .envelope-scene {
+    height: 300px;
+  }
+  .letter-body p {
+    font-size: 16px;
+    line-height: 1.85;
+  }
+  .chapter-description,
+  .final-text,
+  .thank-message p,
+  .wish-message p {
+    font-size: 16px;
+  }
+  .chapter-heading h1 {
+    font-size: clamp(38px, 10.5vw, 53px);
+    line-height: 1.07;
+    overflow-wrap: anywhere;
+  }
+  .album {
+    padding: 28px 19px 22px;
+    max-width: 440px;
+  }
+  .album-binding {
+    display: none;
+  }
+  .album-spread {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .polaroid,
+  .polaroid:nth-child(even) {
+    transform: rotate(-1.5deg);
+    padding: 11px 11px 20px;
+  }
+  button.polaroid:hover {
+    transform: rotate(-1.5deg);
+  }
+  .photo-window {
+    aspect-ratio: 3 / 4;
+    background: #eee9df;
+  }
+  .photo-window img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .photo-caption {
+    font-size: 29px;
+    margin-top: 16px;
+    line-height: 1.15;
+  }
+  .polaroid time {
+    font-size: 12px;
+  }
+  .album-pagination {
+    gap: 24px;
+    font-size: 14px;
+    margin-top: 21px;
+  }
+  .album-pagination .icon-button {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--line);
+  }
+  .album-swipe-note {
+    font-size: 12px;
+    max-width: 290px;
+    margin-top: 13px;
+  }
+  .empty-polaroid:nth-child(2) {
+    display: none;
+  }
+  .photo-modal {
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+    max-height: calc(100svh - 20px);
+  }
+  .photo-modal .modal-inner {
+    padding: 54px 12px max(20px, env(safe-area-inset-bottom));
+  }
+  .photo-modal figure {
+    touch-action: pan-y pinch-zoom;
+  }
+  .photo-modal img {
+    width: 100%;
+    height: auto;
+    max-height: calc(100svh - 220px);
+    object-fit: contain;
+  }
+  .photo-modal .modal-close {
+    top: 4px;
+    right: 4px;
+    width: 48px;
+    height: 48px;
+  }
+  .photo-modal figcaption {
+    font-size: 28px;
+  }
+  .photo-modal .album-pagination {
+    margin-top: 16px;
+  }
+  .journey-actions {
+    gap: 8px;
+  }
+  .journey-actions > .text-button {
+    font-size: 13px;
+    min-height: 48px;
+  }
+  .journey-caption {
+    font-size: 19px;
+    min-width: 0;
+  }
+  .journey-bar {
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-block: 5px;
+  }
+  .chapter-nav > button {
+    min-height: 54px;
+  }
+  .nav-dot {
+    font-size: 13px;
+  }
+  .music-panel {
+    top: 55px;
+    width: min(310px, calc(100vw - 32px));
+    right: -52px;
+  }
+  .music-panel .text-button {
+    font-size: 14px;
+  }
+  .music-panel label {
+    font-size: 14px;
+  }
+  .music-note,
+  .music-attribution {
+    font-size: 12px;
+  }
+  .music-panel input {
+    min-height: 44px;
+  }
+  .final-actions {
+    width: 100%;
+  }
+  .final-actions > .primary-button {
+    min-width: 225px;
+  }
+}
+@media (max-width: 359px) {
+  .brand {
+    font-size: 19px;
+    gap: 6px;
+  }
+  .header-actions {
+    gap: 4px;
+  }
+  .intro .eyebrow {
+    font-size: 8px;
+  }
+  .intro-text {
+    max-width: 275px;
+  }
+  .journey-bar {
+    gap: 8px;
+  }
+  .journey-caption {
+    font-size: 16px;
+  }
+  .journey-actions > .text-button {
+    font-size: 12px;
+  }
+  .journey-actions {
+    gap: 5px;
+  }
+}
