@@ -2,7 +2,7 @@ import { useId } from 'react'
 import { giftConfig } from '../config/gift.config'
 import { mixColors } from '../utils/colors'
 
-// Собственная процедурная графика. Все лепестки, ветви и листья — SVG.
+// Собственная процедурная графика. Все лепестки, ветви и листья – SVG.
 export function FlowerHead({
   x = 0,
   y = 0,

@@ -1,10 +1,10 @@
-quiet-garden.wav — «Тихий сад».
+quiet-garden.wav – «Тихий сад».
 Оригинальная алгоритмическая инструментальная миниатюра, созданная для проекта «Для тебя, мам».
 Мелодия синтезируется scripts/generate-music.mjs без использования сэмплов и чужих произведений.
 Посвящение общественному достоянию CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
 Разрешено свободно использовать, менять и распространять.
 
-amberlight.mp3 — 'Amberlight' by Scott Buckley — released under CC-BY 4.0.
+amberlight.mp3 – 'Amberlight' by Scott Buckley – released under CC-BY 4.0.
 www.scottbuckley.com.au
 Официальная страница: https://www.scottbuckley.com.au/library/amberlight/
 Лицензия: https://creativecommons.org/licenses/by/4.0/

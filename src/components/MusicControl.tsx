@@ -172,7 +172,7 @@ export default function MusicControl() {
               <a href={giftConfig.music.credit.sourceUrl} target="_blank" rel="noreferrer">
                 {giftConfig.music.credit.title}
               </a>{' '}
-              by {giftConfig.music.credit.artist} — released under{' '}
+              by {giftConfig.music.credit.artist} – released under{' '}
               <a href={giftConfig.music.credit.licenseUrl} target="_blank" rel="noreferrer">
                 CC BY 4.0
               </a>

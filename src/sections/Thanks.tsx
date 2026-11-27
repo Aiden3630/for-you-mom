@@ -23,7 +23,7 @@ export default function Thanks({
         <h1 id="chapter-heading" tabIndex={-1}>
           Спасибо <em>тебе</em>
         </h1>
-        <p className="chapter-description">В каждом маленьком письме — большая благодарность.</p>
+        <p className="chapter-description">В каждом маленьком письме – большая благодарность.</p>
       </div>
       <div className="gratitude-letters">
         {giftConfig.thanks.map((item, i) => (

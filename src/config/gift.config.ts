@@ -37,10 +37,10 @@ export interface GiftConfig {
   chapters: { id: ChapterId; label: string; enabled: boolean }[]
 }
 
-// Всё личное — здесь. Пути к файлам указываются относительно public, без начального /.
+// Всё личное – здесь. Пути к файлам указываются относительно public, без начального /.
 export const giftConfig: GiftConfig = {
   motherName: 'мам',
-  sonName: 'твой сын',
+  sonName: 'Никита',
   siteTitle: 'Для тебя, мам',
   holidayDate: '2026-11-29',
   intro: {
@@ -84,7 +84,7 @@ export const giftConfig: GiftConfig = {
     },
     {
       title: 'За тепло нашего дома',
-      text: 'Дом — это прежде всего чувство, что тебя любят. Спасибо за него.',
+      text: 'Дом – это прежде всего чувство, что тебя любят. Спасибо за него.',
     },
     {
       title: 'За всё, чему ты научила',
@@ -96,7 +96,7 @@ export const giftConfig: GiftConfig = {
     },
     {
       title: 'За то, что ты моя мама',
-      text: 'Из всех слов самое тёплое для меня — «мама». Спасибо, что ты есть.',
+      text: 'Из всех слов самое тёплое для меня – «мама». Спасибо, что ты есть.',
     },
   ],
   wishes: [

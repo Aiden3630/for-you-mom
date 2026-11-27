@@ -55,7 +55,7 @@ export default function Memories() {
   return (
     <section className="memories-chapter chapter" aria-labelledby="chapter-heading">
       <div className="chapter-heading">
-        <p className="eyebrow">Самое дорогое — между нами</p>
+        <p className="eyebrow">Самое дорогое – между нами</p>
         <h1 id="chapter-heading" tabIndex={-1}>
           Наши <em>воспоминания</em>
         </h1>
@@ -104,7 +104,7 @@ export default function Memories() {
                       <span>{i ? 'Для наших улыбок' : 'Для дорогих моментов'}</span>
                     </div>
                     <span className="photo-caption">Здесь будет наше фото</span>
-                    <span className="empty-photo-note">Самое ценное — впереди</span>
+                    <span className="empty-photo-note">Самое ценное – впереди</span>
                   </div>
                 ))}
           </motion.div>

@@ -12,6 +12,7 @@ export default tseslint.config(
       'delivery/offline-gift/**',
       'node_modules',
       'output',
+      'outputs/**',
       'playwright-report',
       'test-results',
     ],

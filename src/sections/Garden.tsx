@@ -27,7 +27,7 @@ export default function Garden({
         <h1 id="chapter-heading" tabIndex={-1}>
           Сад <em>для мамы</em>
         </h1>
-        <p className="chapter-description">Коснись бутона — и для тебя распустится пожелание.</p>
+        <p className="chapter-description">Коснись бутона – и для тебя распустится пожелание.</p>
       </div>
       <div className="garden-scene">
         <div className="garden-sun" aria-hidden="true" />
@@ -113,7 +113,7 @@ export default function Garden({
             <p>{personalize(giftConfig.wishes[active].text)}</p>
           </motion.div>
         ) : (
-          <p className="garden-hint">Каждый цветок — моё пожелание тебе.</p>
+          <p className="garden-hint">Каждый цветок – моё пожелание тебе.</p>
         )}
       </div>
       <button

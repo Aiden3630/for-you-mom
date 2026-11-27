@@ -34,7 +34,7 @@ export default function Bouquet({ save }: { save: (kind: 'bouquet' | 'final') =>
       <div className="bouquet-scene">
         <div className="bouquet-halo" />
         <BouquetArt className="large-bouquet" animated />
-        <span className="bouquet-handwriting">каждый цветок — спасибо</span>
+        <span className="bouquet-handwriting">каждый цветок – спасибо</span>
       </div>
     </section>
   )

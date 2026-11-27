@@ -19,7 +19,7 @@ export default function Final({
         <Heart size={73} strokeWidth={0.65} />
         <span>мам</span>
       </div>
-      <p className="eyebrow">Ты — моё самое тёплое место в мире</p>
+      <p className="eyebrow">Ты – моё самое тёплое место в мире</p>
       <h1 id="chapter-heading" tabIndex={-1}>
         {personalize(giftConfig.final.title)}
       </h1>

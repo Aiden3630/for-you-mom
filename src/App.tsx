@@ -263,7 +263,7 @@ export default function App() {
         {menu && (
           <Modal title="Оглавление подарка" onClose={() => setMenu(false)}>
             <BookOpen className="modal-emblem" size={29} strokeWidth={1} />
-            <p className="eyebrow">Каждая страница — для тебя</p>
+            <p className="eyebrow">Каждая страница – для тебя</p>
             <h2>
               Наша маленькая <em>история</em>
             </h2>
