@@ -22,7 +22,7 @@ function smoothVolume(
 }
 
 export default function MusicControl() {
-  const [enabled, setEnabled] = useStoredState('mom-gift-music', false)
+  const [enabled, setEnabled] = useStoredState('mom-gift-music-autoplay', true)
   const [volume, setVolume] = useStoredState('mom-gift-volume', giftConfig.music.defaultVolume)
   const [playing, setPlaying] = useState(false)
   const [panel, setPanel] = useState(false)
@@ -41,9 +41,10 @@ export default function MusicControl() {
     const fadeFrame = fade
     const el = new Audio(publicAsset(giftConfig.music.src))
     el.loop = true
-    el.preload = 'none'
-    el.volume = 0
+    el.preload = 'auto'
+    el.volume = Math.min(0.01, Math.max(0, Number(level.current) || 0))
     audio.current = el
+    let disposed = false
     const fail = () => {
       setError(true)
       setPlaying(false)
@@ -58,29 +59,44 @@ export default function MusicControl() {
     }
     el.addEventListener('error', fail)
     document.addEventListener('visibilitychange', pauseHidden)
-    // Сохранённое согласие используется только при новом явном действии.
-    const consentedInteraction = () => {
+    // Сначала пробуем сразу; при блокировке повторяем из настоящего жеста пользователя.
+    const start = () => {
       if (preference.current && !document.hidden && el.paused) {
-        el.volume = 0
         void el
           .play()
           .then(() => {
+            if (disposed) return
+            if (!preference.current || document.hidden) {
+              el.pause()
+              return
+            }
+            setError(false)
             setPlaying(true)
             smoothVolume(el, Math.max(0, Math.min(1, Number(level.current) || 0)), fadeFrame)
           })
-          .catch(() => {
-            /* Автозапуск может быть отклонён браузером. */
+          .catch((cause: unknown) => {
+            if (disposed) return
+            if (
+              cause instanceof DOMException &&
+              (cause.name === 'NotAllowedError' || cause.name === 'AbortError')
+            )
+              return
+            fail()
           })
       }
     }
-    document.addEventListener('pointerdown', consentedInteraction)
-    document.addEventListener('keydown', consentedInteraction)
+    start()
+    document.addEventListener('pointerup', start)
+    document.addEventListener('click', start)
+    document.addEventListener('keydown', start)
     return () => {
+      disposed = true
       cancelAnimationFrame(fadeFrame.current)
       el.pause()
       el.removeEventListener('error', fail)
-      document.removeEventListener('pointerdown', consentedInteraction)
-      document.removeEventListener('keydown', consentedInteraction)
+      document.removeEventListener('pointerup', start)
+      document.removeEventListener('click', start)
+      document.removeEventListener('keydown', start)
       document.removeEventListener('visibilitychange', pauseHidden)
     }
   }, [])

@@ -52,7 +52,7 @@ test('Наши пять фотографий целиком: телефон, с�
     await page.screenshot({ path: 'output/playwright/album-personal-mobile.png', fullPage: true })
 })
 
-test('Amberlight: настоящий MP3, авторство, звук после согласия и непрерывность', async ({
+test('Amberlight: настоящий MP3, авторство, автоматический запуск и непрерывность', async ({
   page,
 }) => {
   await page.addInitScript(() => {
@@ -62,15 +62,16 @@ test('Amberlight: настоящий MP3, авторство, звук посл�
       return play.call(this)
     }
   })
-  const mediaRequests: string[] = []
-  page.on('request', (r) => {
-    if (/amberlight\.mp3/.test(r.url())) mediaRequests.push(r.url())
-  })
   await page.goto('/')
-  expect(mediaRequests).toEqual([])
+  await expect
+    .poll(() =>
+      page.evaluate(() =>
+        Boolean((window as unknown as { giftTestAudio?: HTMLMediaElement }).giftTestAudio),
+      ),
+    )
+    .toBe(true)
   await page.getByRole('button', { name: 'Музыка', exact: true }).click()
   await expect(page.locator('.music-attribution')).toContainText('Scott Buckley')
-  await page.getByRole('button', { name: 'Включить музыку', exact: true }).click()
   await expect(page.getByRole('button', { name: 'Выключить музыку', exact: true })).toBeVisible()
   await expect
     .poll(() =>
@@ -109,6 +110,34 @@ test('Amberlight: настоящий MP3, авторство, звук посл�
     .toBe(true)
   const header = await readFile('public/music/amberlight.mp3')
   expect(header.length).toBe(11319612)
+})
+
+test('Блокировка автозапуска: звук после первого действия, выключение остаётся выключением', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    const play = HTMLMediaElement.prototype.play
+    HTMLMediaElement.prototype.play = function () {
+      if (!navigator.userActivation.isActive) {
+        return Promise.reject(new DOMException('Ждём касания', 'NotAllowedError'))
+      }
+      return play.call(this)
+    }
+  })
+  await page.goto('/')
+  await expect(page.locator('#chapter-heading')).toBeVisible()
+  await expect(page.locator('.sound-indicator.on')).toHaveCount(0)
+  await page.getByRole('button', { name: 'Открыть письмо', exact: true }).click()
+  await expect(page.locator('.sound-indicator.on')).toHaveCount(1)
+  await page.getByRole('button', { name: 'Музыка', exact: true }).click()
+  await expect(page.locator('.music-note')).not.toContainText('недоступна')
+  await page.getByRole('button', { name: 'Выключить музыку', exact: true }).click()
+  await page.getByRole('button', { name: 'Закрыть настройки' }).click()
+  await page.getByRole('button', { name: 'Дальше', exact: true }).click()
+  await expect(page.locator('.sound-indicator.on')).toHaveCount(0)
+  await page.reload()
+  await page.getByRole('button', { name: 'Музыка', exact: true }).click()
+  await expect(page.getByRole('button', { name: 'Включить музыку', exact: true })).toBeVisible()
 })
 
 test('Альбом без фотографий остаётся аккуратным', async ({ page }) => {

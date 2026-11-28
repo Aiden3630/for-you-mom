@@ -69,8 +69,8 @@ export default function App() {
   async function save(kind: 'bouquet' | 'final') {
     try {
       const { createPostcard } = await import('./utils/postcard')
-      const svg = exportRef.current?.querySelector('svg')
-      if (!svg) throw new Error('Букет ещё загружается')
+      const svg = exportRef.current?.querySelector('svg') ?? null
+      if (kind === 'bouquet' && !svg) throw new Error('Букет ещё загружается')
       const blob = await createPostcard(svg, kind)
       const url = URL.createObjectURL(blob)
       setExportUrl(url)

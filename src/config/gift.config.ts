@@ -32,7 +32,7 @@ export interface GiftConfig {
     sage: string
     brown: string
   }
-  final: { title: string; text: string; love: string; signature: string }
+  final: { title: string; text: string; love: string; signature: string; photo?: string }
   secret: string
   chapters: { id: ChapterId; label: string; enabled: boolean }[]
 }
@@ -174,6 +174,7 @@ export const giftConfig: GiftConfig = {
     brown: '#694D46',
   },
   final: {
+    photo: 'photos/family-01.jpg',
     title: 'С Днём матери, мамочка!',
     text: 'Пусть у тебя будет как можно больше счастливых дней. Спасибо, что ты есть.',
     love: 'Я люблю тебя',

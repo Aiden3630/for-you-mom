@@ -98,16 +98,16 @@ test('Оглавление, клавиатура, фокус и уменьшен
   await expect(page.getByRole('dialog')).toHaveCount(0)
 })
 
-test('Музыка: явный запуск, затухание, громкость и сохранение', async ({ page }) => {
+test('Музыка: автозапуск, затухание, громкость и сохранение', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('button', { name: 'Музыка', exact: true }).click()
-  await expect(page.getByRole('button', { name: 'Включить музыку', exact: true })).toBeVisible()
-  await page.getByRole('button', { name: 'Включить музыку', exact: true }).click()
   await expect(page.getByRole('button', { name: 'Выключить музыку', exact: true })).toBeVisible()
   await page.getByLabel('Громкость').fill('0.4')
   await expect.poll(() => page.evaluate(() => localStorage.getItem('mom-gift-volume'))).toBe('0.4')
   await page.getByRole('button', { name: 'Выключить музыку', exact: true }).click()
-  await expect.poll(() => page.evaluate(() => localStorage.getItem('mom-gift-music'))).toBe('false')
+  await expect
+    .poll(() => page.evaluate(() => localStorage.getItem('mom-gift-music-autoplay')))
+    .toBe('false')
   await page.reload()
   await page.getByRole('button', { name: 'Музыка', exact: true }).click()
   await expect(page.getByLabel('Громкость')).toHaveValue('0.4')
@@ -275,12 +275,10 @@ test('Конверт открывается с обычной анимацией
   await expect(page.locator('.letter-body p').last()).toHaveCSS('opacity', '1')
 })
 
-test('Сохранённое согласие ждёт действия; единственная глава остаётся интерактивной', async ({
-  page,
-}, info) => {
+test('Автозапуск и единственная глава остаются интерактивными', async ({ page }, info) => {
   test.skip(info.project.name !== 'edge')
   await page.addInitScript(() => {
-    localStorage.setItem('mom-gift-music', 'true')
+    localStorage.setItem('mom-gift-music-autoplay', 'true')
     localStorage.setItem('mom-gift-volume', '0.3')
   })
   await page.route('**/src/config/gift.config.ts*', async (route) => {
@@ -289,10 +287,8 @@ test('Сохранённое согласие ждёт действия; еди�
     await route.fulfill({ response, body })
   })
   await page.goto('/')
-  await expect(page.locator('.sound-indicator.on')).toHaveCount(0)
   await expect(page.locator('.chapter-nav button')).toHaveCount(1)
   await page.getByRole('button', { name: 'Музыка', exact: true }).click()
-  await page.getByRole('button', { name: 'Включить музыку', exact: true }).click()
   await expect(page.getByRole('button', { name: 'Выключить музыку', exact: true })).toBeVisible()
   await page.getByRole('button', { name: 'Закрыть настройки' }).click()
   await page.getByRole('button', { name: 'Открыть письмо', exact: true }).click()

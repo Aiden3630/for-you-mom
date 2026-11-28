@@ -59,18 +59,12 @@ async function smokeSite(url) {
   await page.goto(url)
   await page.locator('#chapter-heading').waitFor()
   await page.evaluate(() => document.fonts.ready)
-  assert.equal(
-    requests.some((r) => /\.(wav|mp3)(\?|$)/.test(r)),
-    false,
-    'Музыка не должна грузиться до согласия',
-  )
   for (let i = 0; i < 7; i++) {
     await page.locator('.chapter-nav button').nth(i).click()
     await page.locator('#chapter-heading').waitFor()
     assert.equal(await page.locator('section.chapter').count(), 1)
   }
   await page.getByRole('button', { name: 'Музыка', exact: true }).click()
-  await page.getByRole('button', { name: 'Включить музыку', exact: true }).click()
   await page.getByRole('button', { name: 'Выключить музыку', exact: true }).waitFor()
   await page.getByRole('button', { name: 'Закрыть настройки' }).click()
   const download = page.waitForEvent('download')
