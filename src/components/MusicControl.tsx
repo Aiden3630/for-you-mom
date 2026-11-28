@@ -23,7 +23,7 @@ function smoothVolume(
 
 export default function MusicControl() {
   const [enabled, setEnabled] = useStoredState('mom-gift-music-autoplay', true)
-  const [volume, setVolume] = useStoredState('mom-gift-volume', giftConfig.music.defaultVolume)
+  const [volume, setVolume] = useStoredState('mom-gift-volume-v2', giftConfig.music.defaultVolume)
   const [playing, setPlaying] = useState(false)
   const [panel, setPanel] = useState(false)
   const [error, setError] = useState(false)
@@ -183,18 +183,6 @@ export default function MusicControl() {
           <button className="text-button panel-dismiss" onClick={() => setPanel(false)}>
             Закрыть настройки
           </button>
-          {giftConfig.music.credit && (
-            <p className="music-attribution">
-              <a href={giftConfig.music.credit.sourceUrl} target="_blank" rel="noreferrer">
-                {giftConfig.music.credit.title}
-              </a>{' '}
-              by {giftConfig.music.credit.artist} – released under{' '}
-              <a href={giftConfig.music.credit.licenseUrl} target="_blank" rel="noreferrer">
-                CC BY 4.0
-              </a>
-              .
-            </p>
-          )}
         </div>
       )}
     </div>

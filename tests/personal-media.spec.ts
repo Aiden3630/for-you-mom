@@ -52,10 +52,11 @@ test('Наши пять фотографий целиком: телефон, с�
     await page.screenshot({ path: 'output/playwright/album-personal-mobile.png', fullPage: true })
 })
 
-test('Amberlight: настоящий MP3, авторство, автоматический запуск и непрерывность', async ({
+test('Amberlight: настоящий MP3, громкость 50%, автоматический запуск и непрерывность', async ({
   page,
 }) => {
   await page.addInitScript(() => {
+    localStorage.setItem('mom-gift-volume', '0.25')
     const play = HTMLMediaElement.prototype.play
     HTMLMediaElement.prototype.play = function () {
       ;(window as unknown as { giftTestAudio: HTMLMediaElement }).giftTestAudio = this
@@ -71,7 +72,8 @@ test('Amberlight: настоящий MP3, авторство, автоматич
     )
     .toBe(true)
   await page.getByRole('button', { name: 'Музыка', exact: true }).click()
-  await expect(page.locator('.music-attribution')).toContainText('Scott Buckley')
+  await expect(page.locator('.music-attribution')).toHaveCount(0)
+  await expect(page.getByLabel('Громкость')).toHaveValue('0.5')
   await expect(page.getByRole('button', { name: 'Выключить музыку', exact: true })).toBeVisible()
   await expect
     .poll(() =>

@@ -103,7 +103,7 @@ test('Музыка: автозапуск, затухание, громкость
   await page.getByRole('button', { name: 'Музыка', exact: true }).click()
   await expect(page.getByRole('button', { name: 'Выключить музыку', exact: true })).toBeVisible()
   await page.getByLabel('Громкость').fill('0.4')
-  await expect.poll(() => page.evaluate(() => localStorage.getItem('mom-gift-volume'))).toBe('0.4')
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('mom-gift-volume-v2'))).toBe('0.4')
   await page.getByRole('button', { name: 'Выключить музыку', exact: true }).click()
   await expect
     .poll(() => page.evaluate(() => localStorage.getItem('mom-gift-music-autoplay')))
@@ -279,7 +279,7 @@ test('Автозапуск и единственная глава остаютс
   test.skip(info.project.name !== 'edge')
   await page.addInitScript(() => {
     localStorage.setItem('mom-gift-music-autoplay', 'true')
-    localStorage.setItem('mom-gift-volume', '0.3')
+    localStorage.setItem('mom-gift-volume-v2', '0.3')
   })
   await page.route('**/src/config/gift.config.ts*', async (route) => {
     const response = await route.fetch()

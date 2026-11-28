@@ -157,13 +157,7 @@ export const giftConfig: GiftConfig = {
   music: {
     src: 'music/amberlight.mp3',
     title: 'Amberlight · Scott Buckley',
-    defaultVolume: 0.25,
-    credit: {
-      title: 'Amberlight',
-      artist: 'Scott Buckley',
-      sourceUrl: 'https://www.scottbuckley.com.au/library/amberlight/',
-      licenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
-    },
+    defaultVolume: 0.5,
   },
   palette: {
     cream: '#FFF8F0',
